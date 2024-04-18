@@ -61,13 +61,25 @@ main {
     margin-top: 20px;
 }
 
+/* Article Styling */
+article {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+article img {
+    width: 100%; /* Ensure images are responsive */
+    height: auto;
+    border-radius: 8px; /* Adds rounded corners to images */
+}
+
 /* Footer */
 footer {
     background: #333;
     color: white;
     text-align: center;
     padding: 10px;
-    position: absolute;
+    position: relative; /* Changed from absolute to prevent layout issues */
     bottom: 0;
     width: 100%;
 }
@@ -90,5 +102,10 @@ footer {
 @media screen and (max-width: 768px) {
     nav ul li {
         display: block;
+        margin: 0 auto; /* Center align the navigation links on smaller screens */
+    }
+
+    header, footer {
+        text-align: center; /* Ensure text is centered in smaller screens */
     }
 }
