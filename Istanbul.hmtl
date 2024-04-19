@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Istanbul - Accessible Travel Guide</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Istanbul</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="destinations.html">Destinations</a></li>
+                <li><a href="transportation.html">Transportation</a></li>
+                <li><a href="accommodation.html">Accommodation</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="feedback.html">Input</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section>
+            <h2>About Istanbul</h2>
+            <img src="images/Istanbul.jpg" alt="View of the Hagia Sophia in Istanbul.">
+            <p>Istanbul, straddling Europe and Asia across the Bosphorus Strait, is known for its historic sites, including the Hagia Sophia, which has served as a cathedral, mosque, and now a museum. The city offers extensive accessible tourism facilities, including accessible public transportation and guided tours with audio descriptions for the visually impaired.</p>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2024 Accessible Travel Guide. All rights reserved.</p>
+    </footer>
+</body>
+</html>
