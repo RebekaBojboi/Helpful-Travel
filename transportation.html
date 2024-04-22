@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Accessible Transportation Options</title>
     <link rel="stylesheet" href="css/styles.css">
+    <script src="js/scripts.js"></script>
 </head>
 <body>
     <header>
+        <button onclick="toggleDarkMode()">Dark/Light Mode</button> <!-- Dark/Light mode toggle button -->
         <h1>Accessible Transportation Options</h1>
         <nav>
             <ul>
@@ -28,7 +30,8 @@
         <!-- American Airlines -->
         <article>
             <h3>American Airlines</h3>
-            <img src="images/AmericanAirlines.jpg" alt="American Airlines aircraft on the runway.">
+            <img src="images/transportation/AmericanAirlines.jpg" alt="American Airlines aircraft on the runway.">
+            <button onclick="playAudio('audio/transportation/american_airlines.mp3')">Listen to Description</button>
             <p>Offering advanced boarding, special assistance, and wheelchair accessibility on all flights.</p>
             <a href="american_airlines.html">Learn more about American Airlines Accessibility</a>
         </article>
@@ -36,24 +39,62 @@
         <!-- Delta Airlines -->
         <article>
             <h3>Delta Airlines</h3>
-            <img src="images/DeltaAirlines.jpg" alt="Delta Airlines aircraft during boarding.">
+            <img src="images/transportation/DeltaAirlines.jpg" alt="Delta Airlines aircraft during boarding.">
+            <button onclick="playAudio('audio/transportation/delta_airlines.mp3')">Listen to Description</button>
             <p>Features services for passengers with disabilities, including in-flight accessibility and individual assistance.</p>
             <a href="delta_airlines.html">Learn more about Delta Airlines Accessibility</a>
+        </article>
+
+        <!-- Lufthansa -->
+        <article>
+            <h3>Lufthansa</h3>
+            <img src="images/transportation/Lufthansa.jpg" alt="Lufthansa aircraft at the airport.">
+            <button onclick="playAudio('audio/transportation/lufthansa.mp3')">Listen to Description</button>
+            <p>Lufthansa provides a range of accessible travel services, including assistance for mobility-impaired passengers and accessible inflight entertainment.</p>
+            <a href="lufthansa.html">Learn more about Lufthansa Accessibility</a>
+        </article>
+
+        <!-- Southwest Airlines -->
+        <article>
+            <h3>Southwest Airlines</h3>
+            <img src="images/transportation/Southwest.jpg" alt="Southwest Airlines plane on the tarmac.">
+            <button onclick="playAudio('audio/transportation/southwest.mp3')">Listen to Description</button>
+            <p>Southwest Airlines offers comprehensive accessibility services, such as priority boarding, specific seat accommodation, and assistance throughout the journey.</p>
+            <a href="southwest.html">Learn more about Southwest Airlines Accessibility</a>
+        </article>
+
+        <!-- Ryanair -->
+        <article>
+            <h3>Ryanair</h3>
+            <img src="images/transportation/Ryanair.jpg" alt="Ryanair aircraft loading passengers.">
+            <button onclick="playAudio('audio/transportation/ryanair.mp3')">Listen to Description</button>
+            <p>Ryanair is committed to providing accessible travel for all passengers, with pre-flight assistance and onboard accommodations to ensure a comfortable journey.</p>
+            <a href="ryanair.html">Learn more about Ryanair Accessibility</a>
         </article>
 
         <!-- Accessible Taxi Services -->
         <article>
             <h3>Accessible Taxi Services</h3>
-            <img src="images/AccessibleTaxi.jpg" alt="An accessible taxi with a ramp for wheelchairs.">
+            <img src="images/transportation/AccessibleTaxi.jpg" alt="An accessible taxi with a ramp for wheelchairs.">
+            <button onclick="playAudio('audio/transportation/accessible_taxi.mp3')">Listen to Description</button>
             <p>Accessible taxis equipped with ramps and adequate space, available in major cities worldwide.</p>
             <a href="accessible_taxi.html">Learn more about Accessible Taxi Services</a>
         </article>
-
     </main>
     
     <footer>
         <p>&copy; 2024 Accessible Travel Guide. All rights reserved.</p>
         <p>Follow us on [Social Media Links]</p>
     </footer>
+
+    <script>
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+        }
+
+        function playAudio(file) {
+            new Audio(file).play();
+        }
+    </script>
 </body>
 </html>
