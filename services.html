@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Accessible Services</title>
     <link rel="stylesheet" href="css/styles.css">
+    <script src="js/scripts.js"></script>
 </head>
 <body>
     <header>
+        <button onclick="toggleDarkMode()">Dark/Light Mode</button>
         <h1>Accessible Services</h1>
         <nav>
             <ul>
@@ -28,7 +30,8 @@
         <!-- Massages -->
         <article>
             <h3>Accessible Massages</h3>
-            <img src="images/Massage.jpg" alt="A massage therapy session accessible for individuals with mobility issues.">
+            <img src="images/services/Massage.jpg" alt="A massage therapy session accessible for individuals with mobility issues.">
+            <button onclick="playAudio('audio/services/massage.mp3')">Listen to Description</button>
             <p>Specialized massage services tailored for individuals with mobility issues, featuring adjustable tables and skilled therapists.</p>
             <a href="accessible_massage.html">Learn more about Accessible Massage Services</a>
         </article>
@@ -36,7 +39,8 @@
         <!-- Sports Instructors -->
         <article>
             <h3>Adaptive Sports Instruction</h3>
-            <img src="images/SportsInstructor.jpg" alt="An adaptive sports session with a professional instructor.">
+            <img src="images/services/SportsInstructor.jpg" alt="An adaptive sports session with a professional instructor.">
+            <button onclick="playAudio('audio/services/sports_instructor.mp3')">Listen to Description</button>
             <p>Professional sports instructors trained to provide adaptive training for various sports, ensuring safe and inclusive athletic participation.</p>
             <a href="adaptive_sports.html">Learn more about Adaptive Sports Instruction</a>
         </article>
@@ -44,7 +48,8 @@
         <!-- Yoga -->
         <article>
             <h3>Accessible Yoga</h3>
-            <img src="images/Yoga.jpg" alt="An accessible yoga class with modifications for various needs.">
+            <img src="images/services/Yoga.jpg" alt="An accessible yoga class with modifications for various needs.">
+            <button onclick="playAudio('audio/services/yoga.mp3')">Listen to Description</button>
             <p>Yoga classes with options for modifications to accommodate people with different physical abilities, ensuring a relaxing and beneficial experience.</p>
             <a href="accessible_yoga.html">Learn more about Accessible Yoga</a>
         </article>
@@ -52,18 +57,26 @@
         <!-- Pottery -->
         <article>
             <h3>Adaptive Pottery Classes</h3>
-            <img src="images/Pottery.jpg" alt="A pottery class designed for accessibility, with wheel height adjustments.">
+            <img src="images/services/Pottery.jpg" alt="A pottery class designed for accessibility, with wheel height adjustments.">
+            <button onclick="playAudio('audio/services/pottery.mp3')">Listen to Description</button>
             <p>Pottery classes designed with accessibility in mind, featuring adjustable equipment and personal assistance for a creative and inclusive experience.</p>
             <a href="adaptive_pottery.html">Learn more about Adaptive Pottery Classes</a>
         </article>
-
-        <!-- More services can be added in a similar format -->
-
     </main>
     
     <footer>
         <p>&copy; 2024 Accessible Travel Guide. All rights reserved.</p>
         <p>Follow us on [Social Media Links]</p>
     </footer>
+
+    <script>
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+        }
+
+        function playAudio(file) {
+            new Audio(file).play();
+        }
+    </script>
 </body>
 </html>
