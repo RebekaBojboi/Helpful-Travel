@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Accessible Accommodations</title>
     <link rel="stylesheet" href="css/styles.css">
+    <script src="js/scripts.js"></script>
 </head>
 <body>
     <header>
+        <button onclick="toggleDarkMode()">Dark/Light Mode</button> <!-- Dark/Light mode toggle button -->
         <h1>Accessible Accommodations</h1>
         <nav>
             <ul>
@@ -67,8 +69,12 @@
         <p>&copy; 2024 Accessible Travel Guide. All rights reserved.</p>
         <p>Follow us on [Social Media Links]</p>
     </footer>
-    
+
     <script>
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+        }
+
         function playAudio(file) {
             new Audio(file).play();
         }
