@@ -28,7 +28,8 @@
         <!-- Marriott International -->
         <article>
             <h3>Marriott International</h3>
-            <img src="images/Marriott.jpg" alt="Interior of a Marriott hotel room adapted for accessibility.">
+            <img src="images/accommodation/Marriott.jpg" alt="Interior of a Marriott hotel room adapted for accessibility.">
+            <button onclick="playAudio('audio/accommodation/marriott.mp3')">Listen to Description</button>
             <p>Marriott offers rooms specially designed for accessibility, with features like wheelchair access, grab bars in bathrooms, and visual alarm alerts.</p>
             <a href="marriott_international.html">Learn more about Marriott Accessibility</a>
         </article>
@@ -36,7 +37,8 @@
         <!-- Hilton Worldwide -->
         <article>
             <h3>Hilton Worldwide</h3>
-            <img src="images/Hilton.jpg" alt="Accessible hotel room in Hilton with special accommodations.">
+            <img src="images/accommodation/Hilton.jpg" alt="Accessible hotel room in Hilton with special accommodations.">
+            <button onclick="playAudio('audio/accommodation/hilton.mp3')">Listen to Description</button>
             <p>Hilton ensures that all their hotels provide enhanced room and facility accessibility, including roll-in showers and adaptive equipment.</p>
             <a href="hilton_worldwide.html">Learn more about Hilton Accessibility</a>
         </article>
@@ -44,7 +46,8 @@
         <!-- Intercontinental Hotels Group -->
         <article>
             <h3>Intercontinental Hotels Group</h3>
-            <img src="images/Intercontinental.jpg" alt="A spacious and accessible room at an Intercontinental hotel.">
+            <img src="images/accommodation/Intercontinental.jpg" alt="A spacious and accessible room at an Intercontinental hotel.">
+            <button onclick="playAudio('audio/accommodation/intercontinental.mp3')">Listen to Description</button>
             <p>Intercontinental Hotels offer accessible rooms with thoughtful design to accommodate guests with special needs, ensuring a comfortable stay.</p>
             <a href="intercontinental_hotels.html">Learn more about Intercontinental Hotel Accessibility</a>
         </article>
@@ -52,7 +55,8 @@
         <!-- Red Lion Hotel -->
         <article>
             <h3>Red Lion Hotel</h3>
-            <img src="images/RedLion.jpg" alt="An accessible lobby area at a Red Lion hotel.">
+            <img src="images/accommodation/RedLion.jpg" alt="An accessible lobby area at a Red Lion hotel.">
+            <button onclick="playAudio('audio/accommodation/red_lion.mp3')">Listen to Description</button>
             <p>Red Lion Hotel provides accessible paths of travel throughout the hotel, from the parking lot to the rooms, ensuring easy access for all guests.</p>
             <a href="red_lion_hotel.html">Learn more about Red Lion Hotel Accessibility</a>
         </article>
@@ -63,5 +67,11 @@
         <p>&copy; 2024 Accessible Travel Guide. All rights reserved.</p>
         <p>Follow us on [Social Media Links]</p>
     </footer>
+    
+    <script>
+        function playAudio(file) {
+            new Audio(file).play();
+        }
+    </script>
 </body>
 </html>
