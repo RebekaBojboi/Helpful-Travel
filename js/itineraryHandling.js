@@ -13,6 +13,12 @@ document.addEventListener('DOMContentLoaded', function() {
             const optionElement = new Option(option, option);
             selectElement.add(optionElement);
         });
+        // Add event listener to clear validation on user correction
+        selectElement.addEventListener('change', () => {
+            if (selectElement.value !== "") {
+                selectElement.style.border = ''; // Remove highlight if the user selects a valid option
+            }
+        });
     }
 
     // Populate all dropdowns upon DOM content loaded
@@ -21,7 +27,6 @@ document.addEventListener('DOMContentLoaded', function() {
     populateDropdown('accommodationSelect', items.accommodation);
     populateDropdown('serviceSelect', items.services);
 
-    // Handle form submission
     document.getElementById('itineraryForm').addEventListener('submit', function(event) {
         event.preventDefault();
         if (validateSelections()) {
@@ -31,7 +36,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Validate selections
     function validateSelections() {
         let allValid = true;
         ['destinationSelect', 'transportationSelect', 'accommodationSelect', 'serviceSelect'].forEach(id => {
@@ -39,21 +43,18 @@ document.addEventListener('DOMContentLoaded', function() {
             if (select.value === "") {
                 select.style.border = '2px solid red'; // Highlight in red
                 allValid = false;
-            } else {
-                select.style.border = ''; // Remove highlight
             }
         });
         return allValid;
     }
 
-    // Display the travel plan
     function displayTravelPlan() {
+        const resultsDiv = document.getElementById('itineraryResults');
         const destination = document.getElementById('destinationSelect').value;
         const transportation = document.getElementById('transportationSelect').value;
         const accommodation = document.getElementById('accommodationSelect').value;
         const service = document.getElementById('serviceSelect').value;
 
-        const resultsDiv = document.getElementById('itineraryResults');
-        resultsDiv.innerHTML = `<p>You chose to go to ${destination} with ${transportation}, to stay at the ${accommodation} whilst you are there, and to have fun at ${service}.</p>`;
+        resultsDiv.innerHTML = `<p>Your travel plan: Go to ${destination} with ${transportation}, stay at the ${accommodation}, and enjoy ${service}.</p>`;
     }
 });
