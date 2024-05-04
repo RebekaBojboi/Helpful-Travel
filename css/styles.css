@@ -27,60 +27,71 @@ header a {
 }
 
 /* Navigation */
-nav ul {
+nav {
     background: #003366;
-    padding: 0;
+    padding: 10px 0;
+}
+
+nav ul {
     list-style: none;
+    padding: 0;
+    margin: 0;
     text-align: center;
 }
 
 nav ul li {
-    display: inline;
+    display: inline-block;
+    margin-right: 10px;
 }
 
 nav ul li a {
-    display: inline-block;
     padding: 10px;
     color: white;
 }
 
-/* Contrast Button */
+/* Dark/Light Mode Toggle Button */
 #contrast-toggle {
-    margin-top: 10px;
-    padding: 5px 20px;
+    padding: 8px 16px;
     background-color: #444;
     color: white;
     border: none;
     cursor: pointer;
+    position: absolute;
+    top: 20px;
+    right: 20px;
 }
 
 /* Main Content */
 main {
-    padding: 20px;
     background: white;
+    padding: 20px;
     margin-top: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Adds subtle shadow around main content */
 }
 
 /* Article Styling */
 article {
     margin-bottom: 20px;
-    text-align: center;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    text-align: left; /* Default text alignment for articles */
 }
 
 article img {
-    width: 100%; /* Ensure images are responsive */
+    width: 100%;
     height: auto;
-    border-radius: 8px; /* Adds rounded corners to images */
+    max-width: 600px; /* Restrict maximum width to make images look sharper */
+    margin: 10px auto; /* Center images within the article */
+    display: block;
 }
 
 /* Footer */
 footer {
     background: #333;
     color: white;
+    padding: 20px 0;
     text-align: center;
-    padding: 10px;
-    position: relative; /* Changed from absolute to prevent layout issues */
-    bottom: 0;
     width: 100%;
 }
 
@@ -90,11 +101,11 @@ footer {
     color: yellow;
 }
 
-.high-contrast a {
+.high-contrast a, .high-contrast button {
     color: cyan;
 }
 
-.high-contrast header, .high-contrast nav ul {
+.high-contrast header, .high-contrast nav {
     background-color: #222;
 }
 
@@ -102,10 +113,12 @@ footer {
 @media screen and (max-width: 768px) {
     nav ul li {
         display: block;
-        margin: 0 auto; /* Center align the navigation links on smaller screens */
+        margin-bottom: 10px;
     }
 
-    header, footer {
-        text-align: center; /* Ensure text is centered in smaller screens */
+    #contrast-toggle {
+        position: static;
+        display: block;
+        margin: 10px auto;
     }
 }
