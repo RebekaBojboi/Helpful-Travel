@@ -33,12 +33,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function displayTravelPlan() {
         const destination = document.getElementById('destinationSelect').value;
-        const transport = document.getElementById('transportSelect').value;
+        const transportation = document.getElementById('transportationSelect').value;
         const accommodation = document.getElementById('accommodationSelect').value;
         const service = document.getElementById('serviceSelect').value;
 
         const resultsDiv = document.getElementById('itineraryResults');
-        resultsDiv.innerHTML = `<p>Your travel plan: Go to ${destination} with ${transport}, stay at ${accommodation}, and enjoy ${service}.</p>`;
-        console.log(`Travel Plan: ${destination}, ${transport}, ${accommodation}, ${service}`);
+        resultsDiv.innerHTML = `<p>Your travel plan: Go to ${destination} with ${transportation}, stay at ${accommodation}, and enjoy ${service}.</p>`;
+        console.log(`Travel Plan: ${destination}, ${transportation}, ${accommodation}, ${service}`);
     }
 });
