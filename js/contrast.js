@@ -1,22 +1,48 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Check if the contrast mode button exists
     const contrastToggle = document.getElementById('contrast-toggle');
-    
-    // Listen for a click event on the button
-    contrastToggle.addEventListener('click', function() {
-        // Toggle a class on the body or main container of the website
-        document.body.classList.toggle('high-contrast');
+    const darkModeToggle = document.getElementById('dark-mode-toggle');  // Assume there's a dark mode toggle button
 
-        // Save the user's preference in local storage
-        if (document.body.classList.contains('high-contrast')) {
-            localStorage.setItem('highContrastEnabled', 'true');
-        } else {
-            localStorage.removeItem('highContrastEnabled');
-        }
-    });
+    // Event listener for high-contrast toggle
+    if (contrastToggle) {
+        contrastToggle.addEventListener('click', function() {
+            toggleHighContrast();
+        });
+    }
 
-    // Check the user's saved preference and apply it
+    // Event listener for dark mode toggle
+    if (darkModeToggle) {
+        darkModeToggle.addEventListener('click', function() {
+            toggleDarkMode();
+        });
+    }
+
+    // Check and apply saved preferences
+    applySavedPreferences();
+});
+
+function toggleHighContrast() {
+    document.body.classList.toggle('high-contrast');
+    updateLocalStorage('highContrastEnabled', document.body.classList.contains('high-contrast'));
+}
+
+function toggleDarkMode() {
+    document.body.classList.toggle('dark-mode');
+    updateLocalStorage('darkModeEnabled', document.body.classList.contains('dark-mode'));
+}
+
+function updateLocalStorage(key, value) {
+    if (value) {
+        localStorage.setItem(key, 'true');
+    } else {
+        localStorage.removeItem(key);
+    }
+}
+
+function applySavedPreferences() {
     if (localStorage.getItem('highContrastEnabled') === 'true') {
         document.body.classList.add('high-contrast');
     }
-});
+    if (localStorage.getItem('darkModeEnabled') === 'true') {
+        document.body.classList.add('dark-mode');
+    }
+}
