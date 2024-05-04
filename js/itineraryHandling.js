@@ -7,8 +7,13 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     function populateDropdown(selector, options) {
+        console.log(`Populating dropdown for selector: ${selector} with options:`, options);
         const selectElement = document.getElementById(selector);
-        selectElement.innerHTML = '';
+        if (!selectElement) {
+            console.error("Dropdown element not found for selector:", selector);
+            return; // Stop further execution if the select element is not found
+        }
+        selectElement.innerHTML = ''; // Clear existing options
         options.forEach(option => {
             const optionElement = new Option(option, option);
             selectElement.add(optionElement);
@@ -21,8 +26,19 @@ document.addEventListener('DOMContentLoaded', function() {
     populateDropdown('serviceSelect', items.services);
 
     document.getElementById('itineraryForm').addEventListener('submit', function(event) {
-        event.preventDefault();
-        // Implement calculation logic here or redirect to server handling.
+        event.preventDefault(); // Prevent form from submitting traditionally
         console.log('Travel Plan Submitted:', this);
+        displayTravelPlan(); // Call to display the calculated travel plan
     });
+
+    function displayTravelPlan() {
+        const destination = document.getElementById('destinationSelect').value;
+        const transport = document.getElementById('transportSelect').value;
+        const accommodation = document.getElementById('accommodationSelect').value;
+        const service = document.getElementById('serviceSelect').value;
+
+        const resultsDiv = document.getElementById('itineraryResults');
+        resultsDiv.innerHTML = `<p>Your travel plan: Go to ${destination} with ${transport}, stay at ${accommodation}, and enjoy ${service}.</p>`;
+        console.log(`Travel Plan: ${destination}, ${transport}, ${accommodation}, ${service}`);
+    }
 });
