@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Itinerary</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/itineraryHandling.js"></script> <!-- Script to handle itinerary logic -->
+</head>
+<body>
+    <header>
+        <button onclick="toggleDarkMode()">Dark/Light Mode</button>
+        <h1>Plan Your Travel Itinerary</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="destinations.html">Destinations</a></li>
+                <li><a href="transportation.html">Transportation</a></li>
+                <li><a href="accommodation.html">Accommodation</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="input.html">Input</a></li>
+                <li><a href="travel_itinerary.html">Travel Itinerary</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <form id="itineraryForm">
+            <section>
+                <label for="destinationSelect">Choose a destination:</label>
+                <select id="destinationSelect" name="destination">
+                    <!-- Options will be dynamically loaded -->
+                </select>
+            </section>
+
+            <section>
+                <label for="transportSelect">Choose transportation:</label>
+                <select id="transportSelect" name="transport">
+                    <!-- Options will be dynamically loaded -->
+                </select>
+            </section>
+
+            <section>
+                <label for="accommodationSelect">Choose accommodation:</label>
+                <select id="accommodationSelect" name="accommodation">
+                    <!-- Options will be dynamically loaded -->
+                </select>
+            </section>
+
+            <section>
+                <label for="serviceSelect">Choose a service:</label>
+                <select id="serviceSelect" name="service">
+                    <!-- Options will be dynamically loaded -->
+                </select>
+            </section>
+
+            <button type="submit">Calculate Travel Plan</button>
+        </form>
+
+        <div id="itineraryResults">
+            <!-- Results will be displayed here after calculation -->
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Accessible Travel Guide. All rights reserved.</p>
+        <p>Follow us on [Social Media Links]</p>
+    </footer>
+
+    <script>
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+        }
+        document.getElementById('itineraryForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            displayTravelPlan();
+        });
+
+        function displayTravelPlan() {
+            const resultsDiv = document.getElementById('itineraryResults');
+            const destination = document.getElementById('destinationSelect').value;
+            const transport = document.getElementById('transportSelect').value;
+            const accommodation = document.getElementById('accommodationSelect').value;
+            const service = document.getElementById('serviceSelect').value;
+            
+            // Assume average of ratings and display
+            resultsDiv.innerHTML = `<p>Your travel plan: Go to ${destination} with ${transport}, stay at ${accommodation}, and enjoy ${service}.</p>`;
+        }
+    </script>
+</body>
+</html>
