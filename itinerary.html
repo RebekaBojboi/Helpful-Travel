@@ -29,6 +29,7 @@
             <section>
                 <label for="destinationSelect">Choose a destination:</label>
                 <select id="destinationSelect" name="destination">
+                    <option value="">-select-</option>
                     <!-- Options will be dynamically loaded by the itineraryHandling.js -->
                 </select>
             </section>
@@ -36,6 +37,7 @@
             <section>
                 <label for="transportationSelect">Choose transportation:</label>
                 <select id="transportationSelect" name="transportation">
+                    <option value="">-select-</option>
                     <!-- Options will be dynamically loaded by the itineraryHandling.js -->
                 </select>
             </section>
@@ -43,6 +45,7 @@
             <section>
                 <label for="accommodationSelect">Choose accommodation:</label>
                 <select id="accommodationSelect" name="accommodation">
+                    <option value="">-select-</option>
                     <!-- Options will be dynamically loaded by the itineraryHandling.js -->
                 </select>
             </section>
@@ -50,6 +53,7 @@
             <section>
                 <label for="serviceSelect">Choose a service:</label>
                 <select id="serviceSelect" name="service">
+                    <option value="">-select-</option>
                     <!-- Options will be dynamically loaded by the itineraryHandling.js -->
                 </select>
             </section>
@@ -76,14 +80,28 @@
             displayTravelPlan(); // Function to calculate and display the itinerary
         });
 
-        function displayTravel Plan() {
+        function displayTravelPlan() {
             const resultsDiv = document.getElementById('itineraryResults');
             const destination = document.getElementById('destinationSelect').value;
             const transportation = document.getElementById('transportationSelect').value;
             const accommodation = document.getElementById('accommodationSelect').value;
             const service = document.getElementById('serviceSelect').value;
-            
-            // Assume average of ratings and display
+
+            // Validate all selections
+            if (!destination || !transportation || !accommodation || !service) {
+                alert('Please select an option from each category.');
+                ['destinationSelect', 'transportationSelect', 'accommodationSelect', 'serviceSelect'].forEach(id => {
+                    const selectElement = document.getElementById(id);
+                    if (!selectElement.value) {
+                        selectElement.style.border = '2px solid red';
+                    } else {
+                        selectElement.style.border = 'none';
+                    }
+                });
+                return;
+            }
+
+            // Display results
             resultsDiv.innerHTML = `<p>Your travel plan: Go to ${destination} with ${transportation}, stay at ${accommodation}, and enjoy ${service}.</p>`;
         }
     </script>
