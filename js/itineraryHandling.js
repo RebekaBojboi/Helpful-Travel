@@ -6,54 +6,54 @@ document.addEventListener('DOMContentLoaded', function() {
         services: ['Massages', 'Sports Instructors', 'Yoga', 'Pottery', 'Basket Weaving', 'Diving']
     };
 
-    // Populate dropdowns with the "-select-" option and then items
     function populateDropdown(selector, options) {
         const selectElement = document.getElementById(selector);
-        if (!selectElement) {
-            console.error("Dropdown element not found for selector:", selector);
-            return;
-        }
-        // Adding a default option to enforce a selection
-        selectElement.innerHTML = `<option value="">-select-</option>`; // Reset and add the default option
+        selectElement.innerHTML = '<option value="">-select-</option>'; // Ensures a "-select-" option is at the top
         options.forEach(option => {
             const optionElement = new Option(option, option);
             selectElement.add(optionElement);
         });
     }
 
+    // Populate all dropdowns upon DOM content loaded
     populateDropdown('destinationSelect', items.destinations);
     populateDropdown('transportationSelect', items.transportation);
     populateDropdown('accommodationSelect', items.accommodation);
     populateDropdown('serviceSelect', items.services);
 
+    // Handle form submission
     document.getElementById('itineraryForm').addEventListener('submit', function(event) {
         event.preventDefault();
         if (validateSelections()) {
             displayTravelPlan();
+        } else {
+            alert('Please make a selection for each category.');
         }
     });
 
+    // Validate selections
     function validateSelections() {
-        let isValid = true;
+        let allValid = true;
         ['destinationSelect', 'transportationSelect', 'accommodationSelect', 'serviceSelect'].forEach(id => {
             const select = document.getElementById(id);
             if (select.value === "") {
-                select.classList.add('highlight');
-                isValid = false;
+                select.style.border = '2px solid red'; // Highlight in red
+                allValid = false;
             } else {
-                select.classList.remove('highlight');
+                select.style.border = ''; // Remove highlight
             }
         });
-        return isValid;
+        return allValid;
     }
 
+    // Display the travel plan
     function displayTravelPlan() {
-        const resultsDiv = document.getElementById('itineraryResults');
         const destination = document.getElementById('destinationSelect').value;
         const transportation = document.getElementById('transportationSelect').value;
         const accommodation = document.getElementById('accommodationSelect').value;
         const service = document.getElementById('serviceSelect').value;
 
-        resultsDiv.innerHTML = `<p>Your travel plan: Go to ${destination} with ${transportation}, stay at ${accommodation}, and enjoy ${service}.</p>`;
+        const resultsDiv = document.getElementById('itineraryResults');
+        resultsDiv.innerHTML = `<p>You chose to go to ${destination} with ${transportation}, to stay at the ${accommodation} whilst you are there, and to have fun at ${service}.</p>`;
     }
 });
