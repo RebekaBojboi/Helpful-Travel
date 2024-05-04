@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +9,7 @@
 </head>
 <body>
     <header>
-        <button onclick="toggleDarkMode()">Dark/Light Mode</button>
+        <button onclick="toggleDarkMode()">Dark/Light Mode</button> <!-- Dark/Light mode toggle button -->
         <h1>Input Feedback</h1>
         <nav>
             <ul>
@@ -26,7 +25,7 @@
     </header>
 
     <main>
-        <form id="feedbackForm">
+        <form id="feedbackForm" onsubmit="handleFormSubmit(event)">
             <label for="categorySelect">Choose a category:</label>
             <select id="categorySelect" name="category" onchange="updateItemSelection(this.value)">
                 <option value="destinations">Destinations</option>
