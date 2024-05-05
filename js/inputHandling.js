@@ -6,12 +6,11 @@ document.addEventListener('DOMContentLoaded', function() {
         services: ['Massages', 'Sports Instructors', 'Yoga', 'Pottery', 'Basket Weaving', 'Diving']
     };
 
-    // Update items in the dropdown based on selected category and add a default select option
+    // Update items in the dropdown based on selected category
     function updateItemSelection(category) {
         const itemSelect = document.getElementById('itemSelect');
         itemSelect.innerHTML = '<option value="">-select-</option>'; // Start with the default select option
-
-        if (category in items) {
+        if (category) {
             items[category].forEach(item => {
                 const option = document.createElement('option');
                 option.value = item;
@@ -42,7 +41,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const comfortRating = document.getElementById('comfortRating').value;
         const additionalNotes = document.getElementById('additionalNotes').value;
 
-        // Here, you can add logic to store these values or send to a server
         console.log("Feedback Submitted", {
             visualRating,
             audioRating,
