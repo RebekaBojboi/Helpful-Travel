@@ -9,16 +9,17 @@ document.addEventListener('DOMContentLoaded', function() {
     // Populate all dropdowns on page load
     function populateDropdown(selector, options) {
         const selectElement = document.getElementById(selector);
+        selectElement.innerHTML = '<option value="">-select-</option>'; // Reset and add default select option
         options.forEach(option => {
             const optionElement = new Option(option, option);
             selectElement.appendChild(optionElement);
         });
     }
 
-    populateDropdown('destinationSelect', items.destinations);
-    populateDropdown('transportationSelect', items.transportation);
-    populateDropdown('accommodationSelect', items.accommodation);
-    populateDropdown('serviceSelect', items.services);
+    // Populate dropdowns for each category
+    Object.keys(items).forEach(category => {
+        populateDropdown(category + 'Select', items[category]);
+    });
 
     document.getElementById('itineraryForm').addEventListener('submit', function(event) {
         event.preventDefault();
