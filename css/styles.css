@@ -30,13 +30,13 @@ header a {
 nav {
     background: #003366;
     padding: 10px 0;
+    text-align: center;
 }
 
 nav ul {
     list-style: none;
-    padding: 0;
     margin: 0;
-    text-align: center;
+    padding: 0;
 }
 
 nav ul li {
@@ -70,28 +70,34 @@ main {
     box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Adds subtle shadow around main content */
 }
 
-/* Article Styling */
-article {
-    margin-bottom: 20px;
-    padding: 10px;
-    border-bottom: 1px solid #ccc;
-    text-align: left; /* Default text alignment for articles */
+/* Form Elements Layout */
+form label, form select, form input, form textarea, form button {
+    display: block; /* Makes each form element take the full width of its container */
+    width: 100%; /* Ensures they take up all available horizontal space */
+    margin-bottom: 20px; /* Adds space between form elements */
 }
 
-article img {
-    width: 100%;
-    height: auto;
-    max-width: 600px; /* Restrict maximum width to make images look sharper */
-    margin: 10px auto; /* Center images within the article */
-    display: block;
+select, input, textarea, button {
+    padding: 10px; /* Adds padding inside form elements for better aesthetics */
+    border: 1px solid #ccc; /* Adds a subtle border */
+}
+
+button {
+    background-color: #007bff; /* Example button color */
+    color: white; /* Text color for buttons */
+    border: none; /* No border for buttons */
+}
+
+.highlight {
+    border-color: red; /* Highlights elements in red when class 'highlight' is added */
 }
 
 /* Footer */
 footer {
     background: #333;
     color: white;
-    padding: 20px 0;
     text-align: center;
+    padding: 20px 0;
     width: 100%;
 }
 
