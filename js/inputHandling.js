@@ -1,70 +1,52 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Input Feedback</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <script src="js/inputHandling.js" defer></script>
-</head>
-<body>
-    <header>
-        <button onclick="toggleDarkMode()">Dark/Light Mode</button>
-        <h1>Input Feedback</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="destinations.html">Destinations</a></li>
-                <li><a href="transportation.html">Transportation</a></li>
-                <li><a href="accommodation.html">Accommodation</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="input.html">Input</a></li>
-                <li><a href="itinerary.html">Travel Itinerary</a></li>
-            </ul>
-        </nav>
-    </header>
+document.addEventListener('DOMContentLoaded', function() {
+    const items = {
+        destinations: ['Istanbul', 'London', 'Dubai', 'Antalya', 'Paris', 'Hong Kong', 'Bangkok', 'NYC', 'Cancun', 'Mecca'],
+        transportation: ['American Airlines', 'Delta Airlines', 'Lufthansa', 'Southwest', 'Ryanair', 'Accessible Taxi Services'],
+        accommodation: ['Marriott International', 'Hilton Worldwide', 'Intercontinental Hotels Group', 'Red Lion Hotel'],
+        services: ['Massages', 'Sports Instructors', 'Yoga', 'Pottery', 'Basket Weaving', 'Diving']
+    };
 
-    <main>
-        <form id="feedbackForm">
-            <label for="categorySelect">Choose a category:</label>
-            <select id="categorySelect" name="category" onchange="updateItemSelection(this.value)">
-                <option value="destinations">Destinations</option>
-                <option value="transportation">Transportation</option>
-                <option value="accommodation">Accommodation</option>
-                <option value="services">Services</option>
-            </select>
+    // Update items in the dropdown based on selected category
+    function updateItemSelection(category) {
+        const itemSelect = document.getElementById('itemSelect');
+        itemSelect.innerHTML = ''; // Clear existing options
+        items[category].forEach(item => {
+            const option = document.createElement('option');
+            option.value = item;
+            option.textContent = item;
+            itemSelect.appendChild(option);
+        });
+    }
 
-            <label for="itemSelect">Choose an item:</label>
-            <select id="itemSelect" name="item">
-                <!-- Options will be dynamically filled based on category selection -->
-            </select>
+    // Handle form submission
+    document.getElementById('feedbackForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        submitFeedback();
+    });
 
-            <label for="visualRating">Visual Impairment Friendly (0-100):</label>
-            <input type="number" id="visualRating" name="visual" min="0" max="100">
+    // Function to handle feedback submission
+    function submitFeedback() {
+        const visualRating = document.getElementById('visualRating').value;
+        const audioRating = document.getElementById('audioRating').value;
+        const mobilityRating = document.getElementById('mobilityRating').value;
+        const expensiveRating = document.getElementById('expensiveRating').value;
+        const busyRating = document.getElementById('busyRating').value;
+        const comfortRating = document.getElementById('comfortRating').value;
+        const additionalNotes = document.getElementById('additionalNotes').value;
 
-            <label for="audioRating">Auditory Impairment Friendly (0-100):</label>
-            <input type="number" id="audioRating" name="audio" min="0" max="100">
-
-            <label for="mobilityRating">Mobility Friendly (0-100):</label>
-            <input type="number" id="mobilityRating" name="mobility" min="0" max="100">
-
-            <label for="expensiveRating">Expensive (0-100):</label>
-            <input type="number" id="expensiveRating" name="expensive" min="0" max="100">
-
-            <label for="busyRating">Busy (0-100):</label>
-            <input type="number" id="busyRating" name="busy" min="0" max="100">
-
-            <label for="comfortRating">Comfortable (0-100):</label>
-            <input type="number" id="comfortRating" name="comfort" min="0" max="100">
-
-            <label for="additionalNotes">Additional Notes:</label>
-            <textarea id="additionalNotes" name="notes"></textarea>
-
-            <button type="submit">Submit Feedback</button>
-        </form>
-    </main>
-
-    <footer>
+        // Here, you can add logic to store these values or send to a server
+        console.log("Feedback Submitted", {
+            visualRating,
+            audioRating,
+            mobilityRating,
+            expensiveRating,
+            busyRating,
+            comfortRating,
+            additionalNotes
+        });
+        alert('Feedback submitted successfully!');
+    }
+});
         <p>&copy; 2024 Accessible Travel Guide. All rights reserved.</p>
         <p>Follow us on [Social Media Links]</p>
     </footer>
