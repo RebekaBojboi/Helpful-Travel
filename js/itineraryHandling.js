@@ -6,15 +6,15 @@ document.addEventListener('DOMContentLoaded', function() {
         services: ['Massages', 'Sports Instructors', 'Yoga', 'Pottery', 'Basket Weaving', 'Diving']
     };
 
-    // Populate dropdowns
     function populateDropdown(selector, options) {
         const selectElement = document.getElementById(selector);
-        selectElement.innerHTML = '<option value="">-select-</option>';
+        selectElement.innerHTML = '<option value="">-select-</option>'; // Adds a default prompt
         options.forEach(option => {
             const optionElement = new Option(option, option);
             selectElement.add(optionElement);
         });
         selectElement.addEventListener('change', function() {
+            // Remove red border if a valid option is selected
             if (this.value !== "") {
                 this.classList.remove('highlight');
             }
@@ -27,22 +27,15 @@ document.addEventListener('DOMContentLoaded', function() {
     populateDropdown('accommodationSelect', items.accommodation);
     populateDropdown('serviceSelect', items.services);
 
+    // Form submission handling
     document.getElementById('itineraryForm').addEventListener('submit', function(event) {
-        event.preventDefault();
+        event.preventDefault(); // Prevent the form from submitting traditionally
         if (validateSelections()) {
-            displayTravelPlan();
+            displayTravelPlan(); // Display the travel plan if all selections are valid
         }
     });
 
-    document.getElementById('resetButton').addEventListener('click', function() {
-        ['destinationSelect', 'transportationSelect', 'accommodationSelect', 'serviceSelect'].forEach(id => {
-            const select = document.getElementById(id);
-            select.value = "";
-            select.classList.remove('highlight');
-        });
-        document.getElementById('itineraryResults').innerHTML = "";
-    });
-
+    // Validate all selections and apply/remove red border based on the validity
     function validateSelections() {
         let allValid = true;
         ['destinationSelect', 'transportationSelect', 'accommodationSelect', 'serviceSelect'].forEach(id => {
@@ -57,13 +50,23 @@ document.addEventListener('DOMContentLoaded', function() {
         return allValid;
     }
 
+    // Display the formatted travel plan
     function displayTravelPlan() {
         const destination = document.getElementById('destinationSelect').value;
         const transportation = document.getElementById('transportationSelect').value;
-        the accommodation = document.getElementById('accommodationSelect').value;
+        const accommodation = document.getElementById('accommodationSelect').value;
         const service = document.getElementById('serviceSelect').value;
 
         const resultsDiv = document.getElementById('itineraryResults');
         resultsDiv.innerHTML = `<p>You chose to go to ${destination} with ${transportation}, to stay at the ${accommodation}, and to have fun at ${service}.</p>`;
     }
+
+    // Reset function to clear selections and remove any highlighting
+    document.getElementById('resetButton').addEventListener('click', function() {
+        ['destinationSelect', 'transportationSelect', 'accommodationSelect', 'serviceSelect'].forEach(id => {
+            const selectElement = document.getElementById(id);
+            selectElement.value = ""; // Reset the dropdown
+            selectElement.classList.remove('highlight'); // Remove any highlights
+        });
+    });
 });
