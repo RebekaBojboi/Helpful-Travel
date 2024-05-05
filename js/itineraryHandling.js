@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', function() {
         services: ['Massages', 'Sports Instructors', 'Yoga', 'Pottery', 'Basket Weaving', 'Diving']
     };
 
-    // Populate dropdowns
     function populateDropdown(selector, options) {
         const selectElement = document.getElementById(selector);
         selectElement.innerHTML = '<option value="">-select-</option>'; // Adds a default prompt
@@ -61,4 +60,13 @@ document.addEventListener('DOMContentLoaded', function() {
         const resultsDiv = document.getElementById('itineraryResults');
         resultsDiv.innerHTML = `<p>You chose to go to ${destination} with ${transportation}, to stay at the ${accommodation}, and to have fun at ${service}.</p>`;
     }
+
+    // Reset function to clear selections and remove any highlighting
+    document.getElementById('resetButton').addEventListener('click', function() {
+        ['destinationSelect', 'transportationSelect', 'accommodationSelect', 'serviceSelect'].forEach(id => {
+            const selectElement = document.getElementById(id);
+            selectElement.value = ""; // Reset the dropdown
+            selectElement.classList.remove('highlight'); // Remove any highlights
+        });
+    });
 });
