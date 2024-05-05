@@ -6,39 +6,24 @@ document.addEventListener('DOMContentLoaded', function() {
         services: ['Massages', 'Sports Instructors', 'Yoga', 'Pottery', 'Basket Weaving', 'Diving']
     };
 
+    // Populate all dropdowns on page load
     function populateDropdown(selector, options) {
         const selectElement = document.getElementById(selector);
-        selectElement.innerHTML = '<option value="">-select-</option>'; // Adds a default prompt
         options.forEach(option => {
             const optionElement = new Option(option, option);
-            selectElement.add(optionElement);
+            selectElement.appendChild(optionElement);
         });
     }
 
-    Object.keys(items).forEach(key => {
-        populateDropdown(key + 'Select', items[key]);
-    });
+    populateDropdown('destinationSelect', items.destinations);
+    populateDropdown('transportationSelect', items.transportation);
+    populateDropdown('accommodationSelect', items.accommodation);
+    populateDropdown('serviceSelect', items.services);
 
     document.getElementById('itineraryForm').addEventListener('submit', function(event) {
         event.preventDefault();
-        if (validateSelections()) {
-            displayTravelPlan();
-        }
+        displayTravelPlan();
     });
-
-    function validateSelections() {
-        let isValid = true;
-        Object.keys(items).forEach(key => {
-            const selectElement = document.getElementById(key + 'Select');
-            if (selectElement.value === "") {
-                selectElement.classList.add('highlight');
-                isValid = false;
-            } else {
-                selectElement.classList.remove('highlight');
-            }
-        });
-        return isValid;
-    }
 
     function displayTravelPlan() {
         const destination = document.getElementById('destinationSelect').value;
@@ -46,15 +31,21 @@ document.addEventListener('DOMContentLoaded', function() {
         const accommodation = document.getElementById('accommodationSelect').value;
         const service = document.getElementById('serviceSelect').value;
 
+        if (!destination || !transportation || !accommodation || !service) {
+            alert('Please select an option from each category.');
+            return;
+        }
+
         const resultsDiv = document.getElementById('itineraryResults');
         resultsDiv.innerHTML = `You chose to go to ${destination} with ${transportation}, to stay at ${accommodation}, and to have fun at ${service}.`;
     }
 
-    document.getElementById('resetButton').addEventListener('click', function() {
-        Object.keys(items).forEach(key => {
-            const selectElement = document.getElementById(key + 'Select');
-            selectElement.value = "";
-            selectElement.classList.remove('highlight');
+    function resetForm() {
+        ['destinationSelect', 'transportationSelect', 'accommodationSelect', 'serviceSelect'].forEach(id => {
+            document.getElementById(id).value = "";
         });
-    });
+        document.getElementById('itineraryResults').innerHTML = "";
+    }
+
+    window.resetForm = resetForm; // Make resetForm globally available for the HTML button
 });
