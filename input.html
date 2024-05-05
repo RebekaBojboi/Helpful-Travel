@@ -9,7 +9,7 @@
 </head>
 <body>
     <header>
-        <button onclick="toggleDarkMode()">Dark/Light Mode</button> <!-- Dark/Light mode toggle button -->
+        <button onclick="toggleDarkMode()">Dark/Light Mode</button>
         <h1>Input Feedback</h1>
         <nav>
             <ul>
@@ -28,6 +28,7 @@
         <form id="feedbackForm" onsubmit="handleFormSubmit(event)">
             <label for="categorySelect">Choose a category:</label>
             <select id="categorySelect" name="category" onchange="updateItemSelection(this.value)">
+                <option value="">-select-</option>
                 <option value="destinations">Destinations</option>
                 <option value="transportation">Transportation</option>
                 <option value="accommodation">Accommodation</option>
@@ -36,6 +37,7 @@
 
             <label for="itemSelect">Choose an item:</label>
             <select id="itemSelect" name="item">
+                <option value="">-select-</option>
                 <!-- Options will be dynamically filled based on category selection -->
             </select>
 
