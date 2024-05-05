@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
         submitFeedback();
     });
 
-    // Function to handle feedback submission
+    // Function to handle feedback submission and reset the form
     function submitFeedback() {
         const visualRating = document.getElementById('visualRating').value;
         const audioRating = document.getElementById('audioRating').value;
@@ -51,5 +51,14 @@ document.addEventListener('DOMContentLoaded', function() {
             additionalNotes
         });
         alert('Feedback submitted successfully!');
+
+        // Reset the form after submission
+        resetForm();
+    }
+
+    // Reset form fields
+    function resetForm() {
+        document.getElementById('feedbackForm').reset();
+        updateItemSelection(''); // Reset item select dropdown
     }
 });
