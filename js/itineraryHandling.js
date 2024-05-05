@@ -14,6 +14,12 @@ document.addEventListener('DOMContentLoaded', function() {
             const optionElement = new Option(option, option);
             selectElement.add(optionElement);
         });
+        selectElement.addEventListener('change', function() {
+            // Remove red border if a valid option is selected
+            if (this.value !== "") {
+                this.classList.remove('highlight');
+            }
+        });
     }
 
     // Initialize dropdowns
@@ -53,6 +59,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const service = document.getElementById('serviceSelect').value;
 
         const resultsDiv = document.getElementById('itineraryResults');
-        resultsDiv.innerHTML = `<p>You chose to go to ${destination} with ${transportation}, to stay at ${accommodation}, and to have fun at ${service}.</p>`;
+        resultsDiv.innerHTML = `<p>You chose to go to ${destination} with ${transportation}, to stay at the ${accommodation}, and to have fun at ${service}.</p>`;
     }
 });
