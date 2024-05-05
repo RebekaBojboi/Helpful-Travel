@@ -25,7 +25,7 @@
     </header>
 
     <main>
-        <form id="feedbackForm" onsubmit="handleFormSubmit(event)">
+        <form id="feedbackForm" onsubmit="handleFormSubmit(event); this.reset(); return false;">
             <label for="categorySelect">Choose a category:</label>
             <select id="categorySelect" name="category" onchange="updateItemSelection(this.value)">
                 <option value="">-select-</option>
