@@ -55,6 +55,7 @@
             </section>
 
             <button type="submit">Calculate Travel Plan</button>
+            <button type="button" onclick="resetForm()">Reset</button> <!-- Reset button -->
         </form>
 
         <div id="itineraryResults">
@@ -99,6 +100,15 @@
 
             // Display results
             resultsDiv.innerHTML = `<p>You chose to go to ${destination} with ${transportation}, to stay at the ${accommodation}, and to have fun at ${service}.</p>`;
+        }
+
+        // Function to reset all dropdowns to the "-select-" option
+        function resetForm() {
+            ['destinationSelect', 'transportationSelect', 'accommodationSelect', 'serviceSelect'].forEach(id => {
+                const select = document.getElementById(id);
+                select.value = "";
+                select.classList.remove('highlight'); // Remove any highlights
+            });
         }
     </script>
 </body>
