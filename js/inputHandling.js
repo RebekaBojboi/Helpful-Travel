@@ -6,17 +6,25 @@ document.addEventListener('DOMContentLoaded', function() {
         services: ['Massages', 'Sports Instructors', 'Yoga', 'Pottery', 'Basket Weaving', 'Diving']
     };
 
-    // Update items in the dropdown based on selected category
+    // Update items in the dropdown based on selected category and add a default select option
     function updateItemSelection(category) {
         const itemSelect = document.getElementById('itemSelect');
-        itemSelect.innerHTML = ''; // Clear existing options
-        items[category].forEach(item => {
-            const option = document.createElement('option');
-            option.value = item;
-            option.textContent = item;
-            itemSelect.appendChild(option);
-        });
+        itemSelect.innerHTML = '<option value="">-select-</option>'; // Start with the default select option
+
+        if (category in items) {
+            items[category].forEach(item => {
+                const option = document.createElement('option');
+                option.value = item;
+                option.textContent = item;
+                itemSelect.appendChild(option);
+            });
+        }
     }
+
+    // Event listener for category selection changes
+    document.getElementById('categorySelect').addEventListener('change', function() {
+        updateItemSelection(this.value);
+    });
 
     // Handle form submission
     document.getElementById('feedbackForm').addEventListener('submit', function(event) {
@@ -47,8 +55,3 @@ document.addEventListener('DOMContentLoaded', function() {
         alert('Feedback submitted successfully!');
     }
 });
-        <p>&copy; 2024 Accessible Travel Guide. All rights reserved.</p>
-        <p>Follow us on [Social Media Links]</p>
-    </footer>
-</body>
-</html>
