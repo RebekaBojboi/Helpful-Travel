@@ -67,6 +67,50 @@
         <p>&copy; 2024 Accessible Travel Guide. All rights reserved.</p>
         <p>Follow us on [Social Media Links]</p>
     </footer>
+
+    <script>
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+        }
+        document.getElementById('itineraryForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission behavior
+            displayTravelPlan(); // Function to calculate and display the itinerary
+        });
+
+        function displayTravelPlan() {
+            const resultsDiv = document.getElementById('itineraryResults');
+            const destination = document.getElementById('destinationSelect').value;
+            const transportation = document.getElementById('transportationSelect').value;
+            const accommodation = document.getElementById('accommodationSelect').value;
+            const service = document.getElementById('serviceSelect').value;
+
+            // Validate all selections
+            if (!destination || !transportation || !accommodation || !service) {
+                alert('Please select an option from each category.');
+                ['destinationSelect', 'transportationSelect', 'accommodationSelect', 'serviceSelect'].forEach(id => {
+                    const selectElement = document.getElementById(id);
+                    if (!selectElement.value) {
+                        selectElement.style.border = '2px solid red';
+                    } else {
+                        selectElement.style.border = 'none';
+                    }
+                });
+                return;
+            }
+
+            // Display results
+            resultsDiv.innerHTML = `<p>You chose to go to ${destination} with ${transportation}, to stay at the ${accommodation}, and to have fun at ${service}.</p>`;
+        }
+
+        // Function to reset all dropdowns to the "-select-" option
+        function resetForm() {
+            ['destinationSelect', 'transportationSelect', 'accommodationSelect', 'serviceSelect'].forEach(id => {
+                const select = document.getElementById(id);
+                select.value = "";
+                select.classList.remove('highlight'); // Remove any highlights
+            });
+        }
+    </script>
 </body>
 </html>
 
