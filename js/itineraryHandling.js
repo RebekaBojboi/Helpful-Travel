@@ -6,12 +6,10 @@ document.addEventListener('DOMContentLoaded', function() {
         services: ['Massages', 'Sports Instructors', 'Yoga', 'Pottery', 'Basket Weaving', 'Diving']
     };
 
-    // Initialize dropdowns
     Object.entries(items).forEach(([key, values]) => {
         populateDropdown(`${key}Select`, values);
     });
 
-    // Form submission handling
     document.getElementById('itineraryForm').addEventListener('submit', function(event) {
         event.preventDefault();
         if (validateSelections()) {
@@ -19,13 +17,12 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Reset function to clear selections and remove any highlighting
-    document.getElementById('resetButton').addEventListener('click', function() {
-        ['destinationSelect', 'transportationSelect', 'accommodationSelect', 'serviceSelect'].forEach(id => {
-            const selectElement = document.getElementById(id);
-            selectElement.value = "";
-            selectElement.classList.remove('highlight');
-        });
+    document.getElementById('resetButton').addEventListener('click', resetForm);
+
+    const submitButton = document.querySelector('form button[type="submit"]');
+    submitButton.addEventListener('click', function() {
+        this.classList.add('button-clicked');
+        setTimeout(() => this.classList.remove('button-clicked'), 300); // Removes the class after 300 milliseconds
     });
 });
 
@@ -58,6 +55,14 @@ function displayTravelPlan() {
 
     const resultsDiv = document.getElementById('itineraryResults');
     resultsDiv.innerHTML = `<p>You chose to go to ${destination} with ${transportation}, to stay at the ${accommodation}, and to have fun at ${service}.</p>`;
+}
+
+function resetForm() {
+    ['destinationSelect', 'transportationSelect', 'accommodationSelect', 'serviceSelect'].forEach(id => {
+        const selectElement = document.getElementById(id);
+        selectElement.value = "";
+        selectElement.classList.remove('highlight');
+    });
 }
 
 function toggleDarkMode() {
