@@ -6,50 +6,51 @@ document.addEventListener('DOMContentLoaded', function() {
         services: ['Massages', 'Sports Instructors', 'Yoga', 'Pottery', 'Basket Weaving', 'Diving']
     };
 
-    console.log("Starting to populate dropdowns...");
-
     function populateDropdown(selector, options) {
         const selectElement = document.getElementById(selector);
-        if (!selectElement) {
-            console.error("Could not find select element:", selector);
-            return;
-        }
-        selectElement.innerHTML = '<option value="">-select-</option>'; // Adds a default 'select' prompt
+        selectElement.innerHTML = '<option value="">-select-</option>'; // Adds a default prompt
         options.forEach(option => {
             const optionElement = new Option(option, option);
-            selectElement.appendChild(optionElement);
+            selectElement.add(optionElement);
         });
-        console.log(`Populated ${selector} with ${options.length} options.`);
+        selectElement.addEventListener('change', function() {
+            // Remove red border if a valid option is selected
+            if (this.value !== "") {
+                this.classList.remove('highlight');
+            }
+        });
     }
 
-    Object.keys(items).forEach(category => {
-        populateDropdown(category + 'Select', items[category]);
-    });
+    // Initialize dropdowns
+    populateDropdown('destinationSelect', items.destinations);
+    populateDropdown('transportationSelect', items.transportation);
+    populateDropdown('accommodationSelect', items.accommodation);
+    populateDropdown('serviceSelect', items.services);
 
+    // Form submission handling
     document.getElementById('itineraryForm').addEventListener('submit', function(event) {
-        event.preventDefault();
+        event.preventDefault(); // Prevent the form from submitting traditionally
         if (validateSelections()) {
-            displayTravelPlan();
-        } else {
-            console.error("Validation failed, selections are incomplete.");
+            displayTravelPlan(); // Display the travel plan if all selections are valid
         }
     });
 
+    // Validate all selections and apply/remove red border based on the validity
     function validateSelections() {
-        let isValid = true;
-        Object.keys(items).forEach(key => {
-            const selectElement = document.getElementById(key + 'Select');
-            if (selectElement.value === "") {
-                selectElement.classList.add('highlight');
-                isValid = false;
+        let allValid = true;
+        ['destinationSelect', 'transportationSelect', 'accommodationSelect', 'serviceSelect'].forEach(id => {
+            const select = document.getElementById(id);
+            if (select.value === "") {
+                select.classList.add('highlight');
+                allValid = false;
             } else {
-                selectElement.classList.remove('highlight');
+                select.classList.remove('highlight');
             }
         });
-        console.log("Validation status:", isValid);
-        return isValid;
+        return allValid;
     }
 
+    // Display the formatted travel plan
     function displayTravelPlan() {
         const destination = document.getElementById('destinationSelect').value;
         const transportation = document.getElementById('transportationSelect').value;
@@ -57,16 +58,15 @@ document.addEventListener('DOMContentLoaded', function() {
         const service = document.getElementById('serviceSelect').value;
 
         const resultsDiv = document.getElementById('itineraryResults');
-        resultsDiv.innerHTML = `You chose to go to ${destination} with ${transportation}, to stay at ${accommodation}, and to have fun at ${service}.`;
+        resultsDiv.innerHTML = `<p>You chose to go to ${destination} with ${transportation}, to stay at the ${accommodation}, and to have fun at ${service}.</p>`;
     }
 
-    window.resetForm = function() {
+    // Reset function to clear selections and remove any highlighting
+    document.getElementById('resetButton').addEventListener('click', function() {
         ['destinationSelect', 'transportationSelect', 'accommodationSelect', 'serviceSelect'].forEach(id => {
             const selectElement = document.getElementById(id);
-            selectElement.value = "";
-            selectElement.classList.remove('highlight');
+            selectElement.value = ""; // Reset the dropdown
+            selectElement.classList.remove('highlight'); // Remove any highlights
         });
-        document.getElementById('itineraryResults').innerHTML = "";
-        console.log("Form has been reset.");
-    };
+    });
 });
