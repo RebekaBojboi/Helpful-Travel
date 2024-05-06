@@ -32,7 +32,8 @@
         <article>
             <h3>Marriott International</h3>
             <img src="images/accommodation/Mariott.jpg" alt="Interior of a Marriott hotel room adapted for accessibility.">
-            <button onclick="playAudio('audio/accommodation/marriott.mp3')">Listen to Description</button>
+            <button onclick="speakDescription('East-Asian inspired garden in front of Marriott International Hotel, with wide pathways.')">Listen to Description</button>
+            <div>IMAGE DESCRIPTION: East-Asian inspired garden in front of Marriott International Hotel, with wide pathways.</div>
             <p>Marriott offers rooms specially designed for accessibility, with features like wheelchair access, grab bars in bathrooms, and visual alarm alerts.</p>
             <a href="marriott_international.html">Learn more about Marriott Accessibility</a>
         </article>
@@ -41,7 +42,8 @@
         <article>
             <h3>Hilton Worldwide</h3>
             <img src="images/accommodation/hilton.jpg" alt="Accessible hotel room in Hilton with special accommodations.">
-            <button onclick="playAudio('audio/accommodation/hilton.mp3')">Listen to Description</button>
+            <button onclick="speakDescription('Polished and chic Hilton Worlwide hotel pictured with dimmed lights and smooth white surfaces - valet parking pictured.')">Listen to Description</button>
+            <div>IMAGE DESCRIPTION: Polished and chic Hilton Worlwide hotel pictured with dimmed lights and smooth white surfaces - valet parking pictured.</div>
             <p>Hilton ensures that all their hotels provide enhanced room and facility accessibility, including roll-in showers and adaptive equipment.</p>
             <a href="hilton_worldwide.html">Learn more about Hilton Accessibility</a>
         </article>
@@ -50,7 +52,8 @@
         <article>
             <h3>Intercontinental Hotels Group</h3>
             <img src="images/accommodation/intercontinental.jpg" alt="A spacious and accessible room at an Intercontinental hotel.">
-            <button onclick="playAudio('audio/accommodation/intercontinental.mp3')">Listen to Description</button>
+            <button onclick="speakDescription('Tall glass Intercontinental Hotels Group Hotel, flanked by palm trees and valet parking - Miami-esque.')">Listen to Description</button>
+            <div>IMAGE DESCRIPTION: Tall glass Intercontinental Hotels Group Hotel, flanked by palm trees and valet parking - Miami-esque.</div>
             <p>Intercontinental Hotels offer accessible rooms with thoughtful design to accommodate guests with special needs, ensuring a comfortable stay.</p>
             <a href="intercontinental_hotels.html">Learn more about Intercontinental Hotel Accessibility</a>
         </article>
@@ -59,7 +62,8 @@
         <article>
             <h3>Red Lion Hotel</h3>
             <img src="images/accommodation/redlion.jpg" alt="An accessible lobby area at a Red Lion hotel.">
-            <button onclick="playAudio('audio/accommodation/red_lion.mp3')">Listen to Description</button>
+            <button onclick="speakDescription('Welcoming home-like RedLion inn pictured, with a motel style layout, featuring low buildings and outside corridors.')">Listen to Description</button>
+            <div>IMAGE DESCRIPTION: Welcoming home-like RedLion inn pictured, with a motel style layout, featuring low buildings and outside corridors.</div>
             <p>Red Lion Hotel provides accessible paths of travel throughout the hotel, from the parking lot to the rooms, ensuring easy access for all guests.</p>
             <a href="red_lion_hotel.html">Learn more about Red Lion Hotel Accessibility</a>
         </article>
@@ -76,8 +80,11 @@
             document.body.classList.toggle('dark-mode');
         }
 
-        function playAudio(file) {
-            new Audio(file).play();
+        function speakDescription(description) {
+            const synth = window.speechSynthesis;
+            const utterance = new SpeechSynthesisUtterance(description);
+            utterance.lang = 'en-US'; // Optionally set the language
+            synth.speak(utterance);
         }
     </script>
 </body>
