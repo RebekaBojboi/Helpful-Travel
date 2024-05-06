@@ -8,13 +8,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function populateDropdown(selector, options) {
         const selectElement = document.getElementById(selector);
-        selectElement.innerHTML = '<option value="">-select-</option>'; // Resets and adds default select option
+        selectElement.innerHTML = '<option value="">-select-</option>'; // Resets and adds default 'select' prompt
         options.forEach(option => {
             const optionElement = new Option(option, option);
             selectElement.appendChild(optionElement);
         });
     }
 
+    // Populate each category dropdown
     Object.keys(items).forEach(category => {
         populateDropdown(category + 'Select', items[category]);
     });
@@ -24,29 +25,39 @@ document.addEventListener('DOMContentLoaded', function() {
         displayTravelPlan();
     });
 
-    function displayTravelPlan() {
-        const destination = document.getElementById('destinationSelect').value;
-        const transportation = document.getElementById('transportationSelect').value;
-        const accommodation = document.getElementById('accommodationSelect').value;
-        const service = document.getElementById('serviceSelect').value;
-
-        if (!destination || !transportation || !accommodation || !service) {
-            alert('Please select an option from each category.');
-            return;
-        }
-
-        const resultsDiv = document.getElementById('itineraryResults');
-        resultsDiv.innerHTML = `You chose to go to ${destination} with ${transportation}, to stay at ${accommodation}, and to have fun at ${service}.`;
+    function validateSelections() {
+        let isValid = true;
+        ['destinationSelect', 'transportationSelect', 'accommodationSelect', 'serviceSelect'].forEach(id => {
+            const selectElement = document.getElementById(id);
+            if (selectElement.value === "") {
+                selectElement.classList.add('highlight');
+                isValid = false;
+            } else {
+                selectElement.classList.remove('highlight');
+            }
+        });
+        return isValid;
     }
 
-    function resetForm() {
+    function displayTravelPlan() {
+        if (validateSelections()) {
+            const destination = document.getElementById('destinationSelect').value;
+            const transportation = document.getElementById('transportationSelect').value;
+            const accommodation = document.getElementById('accommodationSelect').value;
+            const service = document.getElementById('serviceSelect').value;
+            const resultsDiv = document.getElementById('itineraryResults');
+            resultsDiv.innerHTML = `You chose to go to ${destination} with ${transportation}, to stay at ${accommodation}, and to have fun at ${service}.`;
+        } else {
+            alert('Please select an option from each category.');
+        }
+    }
+
+    window.resetForm = function() {
         ['destinationSelect', 'transportationSelect', 'accommodationSelect', 'serviceSelect'].forEach(id => {
             const selectElement = document.getElementById(id);
             selectElement.value = "";
             selectElement.classList.remove('highlight');
         });
         document.getElementById('itineraryResults').innerHTML = "";
-    }
-
-    window.resetForm = resetForm; // Expose the resetForm function globally for the HTML reset button
+    };
 });
