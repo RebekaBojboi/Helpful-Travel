@@ -32,7 +32,8 @@
         <article>
             <h3>Accessible Massages</h3>
             <img src="images/services/massage.jpg" alt="A massage therapy session accessible for individuals with mobility issues.">
-            <button onclick="playAudio('audio/services/massage.mp3')">Listen to Description</button>
+            <button onclick="speakDescription('Man receiving a back massage - he appears to be happy and content.')">Listen to Description</button>
+            <div>IMAGE DESCRIPTION: Man receiving a back massage - he appears to be happy and content. </div>
             <p>Specialized massage services tailored for individuals with mobility issues, featuring adjustable tables and skilled therapists.</p>
             <a href="accessible_massage.html">Learn more about Accessible Massage Services</a>
         </article>
@@ -41,7 +42,8 @@
         <article>
             <h3>Adaptive Sports Instruction</h3>
             <img src="images/services/sports.jpg" alt="An adaptive sports session with a professional instructor.">
-            <button onclick="playAudio('audio/services/sports_instructor.mp3')">Listen to Description</button>
+            <button onclick="speakDescription('Two people playing tennis in a doubles game on a blue court.')">Listen to Description</button>
+            <div>IMAGE DESCRIPTION: Two people playing tennis in a doubles game on a blue court. </div>
             <p>Professional sports instructors trained to provide adaptive training for various sports, ensuring safe and inclusive athletic participation.</p>
             <a href="adaptive_sports.html">Learn more about Adaptive Sports Instruction</a>
         </article>
@@ -50,7 +52,8 @@
         <article>
             <h3>Accessible Yoga</h3>
             <img src="images/services/yoga.jpg" alt="An accessible yoga class with modifications for various needs.">
-            <button onclick="playAudio('audio/services/yoga.mp3')">Listen to Description</button>
+            <button onclick="speakDescription('A group of people doing the warrior pose in an outside yoga session.')">Listen to Description</button>
+            <div>IMAGE DESCRIPTION: A group of people doing the warrior pose in an outside yoga session. </div>
             <p>Yoga classes with options for modifications to accommodate people with different physical abilities, ensuring a relaxing and beneficial experience.</p>
             <a href="accessible_yoga.html">Learn more about Accessible Yoga</a>
         </article>
@@ -59,10 +62,36 @@
         <article>
             <h3>Adaptive Pottery Classes</h3>
             <img src="images/services/pottery.jpg" alt="A pottery class designed for accessibility, with wheel height adjustments.">
-            <button onclick="playAudio('audio/services/pottery.mp3')">Listen to Description</button>
+            <button onclick="playAudio('Two people, as seen from above, molding clay into pots on a wheel.')">Listen to Description</button>
+            <div>IMAGE DESCRIPTION: Two people, as seen from above, molding clay into pots on a wheel. </div>
             <p>Pottery classes designed with accessibility in mind, featuring adjustable equipment and personal assistance for a creative and inclusive experience.</p>
             <a href="adaptive_pottery.html">Learn more about Adaptive Pottery Classes</a>
         </article>
+
+        <!-- Accessible Basket Weaving Class -->
+        <article>
+            <h3>Accessible Basket Weaving</h3>
+            <img src="images/services/basket_weaving.jpg" alt="A group of people engaging in a basket weaving class, with accessibility aids visible.">
+            <button onclick="speakDescription('Participants seated around a large table, each with their own basketry materials. Accessibility aids such as table risers and ergonomic tools are clearly visible.')">Listen to Description</button>
+            <div>IMAGE DESCRIPTION: Participants seated around a large table, each with their own basketry materials. Accessibility aids such as table risers and ergonomic tools are clearly visible.</div>
+            <p>Our basket weaving classes are designed to be accessible for all, featuring ergonomic tools, adjustable tables, and personalized guidance to ensure that everyone can enjoy the art of basketry.</p>
+            <a href="basket_weaving.html">Learn more about our Accessible Basket Weaving classes</a>
+        </article>
+
+        <!-- Accessible Diving Class -->
+        <article>
+            <h3>Accessible Diving</h3>
+            <img src="images/services/diving.jpg" alt="Divers with disabilities being assisted into the water by instructors.">
+            <button onclick="speakDescription('A group of divers with disabilities preparing to enter the water, assisted by professional instructors. Adapted diving gear is used to enhance safety and accessibility.')">Listen to Description</button>
+            <div>IMAGE DESCRIPTION: A group of divers with disabilities preparing to enter the water, assisted by professional instructors. Adapted diving gear is used to enhance safety and accessibility.</div>
+            <p>Explore the underwater world with our accessible diving programs. These classes provide adapted diving gear and one-on-one instructor support to ensure a safe and enjoyable experience for divers of all abilities.</p>
+            <a href="accessible_diving.html">Learn more about our Accessible Diving programs</a>
+        </article>
+
+
+    
+
+        
     </main>
     
     <footer>
@@ -75,8 +104,11 @@
             document.body.classList.toggle('dark-mode');
         }
 
-        function playAudio(file) {
-            new Audio(file).play();
+        function speakDescription(description) {
+            const synth = window.speechSynthesis;
+            const utterance = new SpeechSynthesisUtterance(description);
+            utterance.lang = 'en-US'; // Optionally set the language
+            synth.speak(utterance);
         }
     </script>
 </body>
