@@ -131,6 +131,7 @@
         function speakDescription(description) {
             const synth = window.speechSynthesis;
             const utterance = new SpeechSynthesisUtterance(description);
+            utterance.lang = 'en-US'; // Optionally set the language
             synth.speak(utterance);
         }
     </script>
