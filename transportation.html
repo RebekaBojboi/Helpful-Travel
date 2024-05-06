@@ -32,7 +32,8 @@
         <article>
             <h3>American Airlines</h3>
             <img src="images/transportation/American.jpg" alt="American Airlines aircraft on the runway.">
-            <button onclick="playAudio('audio/transportation/american_airlines.mp3')">Listen to Description</button>
+            <button onclick="speakDescription('White American Airlines plane with American Flag on it twirling in the air - perhaps due to turbulence.')">Listen to Description</button>
+            <div>IMAGE DESCRIPTION: White American Airlines plane with American Flag on it twirling in the air - perhaps due to turbulence.</div>
             <p>Offering advanced boarding, special assistance, and wheelchair accessibility on all flights.</p>
             <a href="american_airlines.html">Learn more about American Airlines Accessibility</a>
         </article>
@@ -41,7 +42,8 @@
         <article>
             <h3>Delta Airlines</h3>
             <img src="images/transportation/Delta.jpg" alt="Delta Airlines aircraft during boarding.">
-            <button onclick="playAudio('audio/transportation/delta_airlines.mp3')">Listen to Description</button>
+            <button onclick="speakDescription('Steady white Delta plane with blue background and red inverted triangle flying elegantly across a sunset.')">Listen to Description</button>
+            <div>IMAGE DESCRIPTION: Steady white Delta plane with blue background and red inverted triangle flying elegantly across a sunset.</div>
             <p>Features services for passengers with disabilities, including in-flight accessibility and individual assistance.</p>
             <a href="delta_airlines.html">Learn more about Delta Airlines Accessibility</a>
         </article>
@@ -50,7 +52,8 @@
         <article>
             <h3>Lufthansa</h3>
             <img src="images/transportation/Lufthansa.jpg" alt="Lufthansa aircraft at the airport.">
-            <button onclick="playAudio('audio/transportation/lufthansa.mp3')">Listen to Description</button>
+            <button onclick="speakDescription(' Very large (mammoth even) Lufthansa plane on the runway.')">Listen to Description</button>
+            <div>IMAGE DESCRIPTION: Very large (mammoth even) Lufthansa plane on the runway.</div>
             <p>Lufthansa provides a range of accessible travel services, including assistance for mobility-impaired passengers and accessible inflight entertainment.</p>
             <a href="lufthansa.html">Learn more about Lufthansa Accessibility</a>
         </article>
@@ -59,7 +62,8 @@
         <article>
             <h3>Southwest Airlines</h3>
             <img src="images/transportation/Southwest.jpg" alt="Southwest Airlines plane on the tarmac.">
-            <button onclick="playAudio('audio/transportation/southwest.mp3')">Listen to Description</button>
+            <button onclick="speakDescription('Colorful (blue, red, and yellow) Southwest planes flying amongst the clouds.')">Listen to Description</button>
+            <div>IMAGE DESCRIPTION: Colorful (blue, red, and yellow) Southwest planes flying amongst the clouds. </div>
             <p>Southwest Airlines offers comprehensive accessibility services, such as priority boarding, specific seat accommodation, and assistance throughout the journey.</p>
             <a href="southwest.html">Learn more about Southwest Airlines Accessibility</a>
         </article>
@@ -68,7 +72,8 @@
         <article>
             <h3>Ryanair</h3>
             <img src="images/transportation/Ryanair.jpg" alt="Ryanair aircraft loading passengers.">
-            <button onclick="playAudio('audio/transportation/ryanair.mp3')">Listen to Description</button>
+            <button onclick="speakDescription('Overtly yellow interior of Ryanair plane with stewardess in the middle.')">Listen to Description</button>
+            <div>IMAGE DESCRIPTION: Overtly yellow interior of Ryanair plane with stewardess in the middle. </div>
             <p>Ryanair is committed to providing accessible travel for all passengers, with pre-flight assistance and onboard accommodations to ensure a comfortable journey.</p>
             <a href="ryanair.html">Learn more about Ryanair Accessibility</a>
         </article>
@@ -77,7 +82,8 @@
         <article>
             <h3>Accessible Taxi Services</h3>
             <img src="images/transportation/taxi.jpg" alt="An accessible taxi with a ramp for wheelchairs.">
-            <button onclick="playAudio('audio/transportation/accessible_taxi.mp3')">Listen to Description</button>
+            <button onclick="speakDescription('Row of yello taxis in a busy, lit-up street.')">Listen to Description</button>
+            <div>IMAGE DESCRIPTION: Row of yello taxis in a busy, lit-up street. </div>
             <p>Accessible taxis equipped with ramps and adequate space, available in major cities worldwide.</p>
             <a href="accessible_taxi.html">Learn more about Accessible Taxi Services</a>
         </article>
@@ -93,8 +99,11 @@
             document.body.classList.toggle('dark-mode');
         }
 
-        function playAudio(file) {
-            new Audio(file).play();
+        function speakDescription(description) {
+            const synth = window.speechSynthesis;
+            const utterance = new SpeechSynthesisUtterance(description);
+            utterance.lang = 'en-US'; // Optionally set the language
+            synth.speak(utterance);
         }
     </script>
 </body>
