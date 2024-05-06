@@ -80,6 +80,7 @@ form label, form select, form input, form textarea, form button {
 select, input, textarea, button {
     padding: 10px; /* Adds padding inside form elements for better aesthetics */
     border: 1px solid #ccc; /* Adds a subtle border */
+    transition: background-color 0.3s ease; /* Smooth transition for background color changes */
 }
 
 button {
@@ -88,8 +89,23 @@ button {
     border: none; /* No border for buttons */
 }
 
+.button-clicked {
+    background-color: #4CAF50; /* Green background for the momentary click effect */
+    color: white; /* White text color */
+}
+
 .highlight {
     border-color: red; /* Highlights elements in red when class 'highlight' is added */
+}
+
+/* Itinerary Results Section */
+#itineraryResults {
+    padding: 20px;
+    margin-top: 20px;
+    background-color: #f0f0f0; /* Light grey background */
+    border: 1px solid #ccc; /* Light grey border */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 18px; /* Larger font size */
 }
 
 /* Footer */
