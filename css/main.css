@@ -18,13 +18,29 @@ body {
 }
 
 /* Dark Mode specific styles */
+
+
+/* Dark mode styles */
 body.dark-mode {
-    background-color: #333;
-    color: #fff;
+    background-color: #000; /* Black background */
+    color: #fff;            /* White text */
 }
 
-.dark-mode a, .dark-mode button {
-    color: #fff;
+body.dark-mode a {
+    color: #00ff00; /* Green for links */
+}
+
+body.dark-mode button {
+    background-color: #00ff00; /* Green buttons */
+    color: #000;               /* Black text on buttons */
+}
+
+body.dark-mode nav {
+    background-color: #005500; /* Dark green navigation */
+}
+
+body.dark-mode header, body.dark-mode footer {
+    background-color: #002200; /* Darker green for header and footer */
 }
 
 /* Container for layout */
