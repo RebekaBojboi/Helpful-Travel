@@ -51,4 +51,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Highlight the current page in the navigation menu
     highlightCurrentPage();
+
+    // Dark mode toggle functionality
+    const toggleButton = document.getElementById('dark-mode-toggle');
+    if (toggleButton) {
+        toggleButton.addEventListener('click', function() {
+            document.body.classList.toggle('dark-mode');
+        });
+    }
 });
