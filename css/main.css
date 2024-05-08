@@ -123,3 +123,12 @@ footer {
         margin: 10px 0;
     }
 }
+
+/* Active link styling */
+nav ul li a.active {
+    color: #fff;
+    background-color: #005bb5; /* Darker shade of the navigation color */
+    font-weight: bold;
+    border-radius: 4px; /* Adds a subtle rounded corner effect */
+    padding: 10px;
+}
