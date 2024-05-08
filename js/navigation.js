@@ -2,6 +2,19 @@ document.addEventListener('DOMContentLoaded', function() {
     // Select the nav menu links
     const navLinks = document.querySelectorAll('nav ul li a');
 
+    // Function to highlight the current page link
+    function highlightCurrentPage() {
+        // Get the current page filename from the URL
+        const currentPage = window.location.pathname.split('/').pop();
+
+        // Loop through nav links and add 'active' class to the current page link
+        navLinks.forEach(link => {
+            if (link.getAttribute('href') === currentPage) {
+                link.classList.add('active');
+            }
+        });
+    }
+
     // Function to handle keydown events for better accessibility
     function handleKeydown(e) {
         const { keyCode } = e;
@@ -35,4 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
     navLinks.forEach(link => {
         link.addEventListener('keydown', handleKeydown);
     });
+
+    // Highlight the current page in the navigation menu
+    highlightCurrentPage();
 });
